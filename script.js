@@ -93,29 +93,3 @@
     }, 200);
   });
 })();
-
-(function () {
-  var track = document.getElementById('card-carousel');
-  var prevBtn = document.getElementById('carousel-prev');
-  var nextBtn = document.getElementById('carousel-next');
-  if (!track || !prevBtn || !nextBtn) return;
-
-  var scrollAmount = 280;
-
-  function updateButtons() {
-    prevBtn.disabled = track.scrollLeft <= 4;
-    nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
-  }
-
-  prevBtn.addEventListener('click', function () {
-    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-  });
-
-  nextBtn.addEventListener('click', function () {
-    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-  });
-
-  track.addEventListener('scroll', updateButtons);
-  window.addEventListener('resize', updateButtons);
-  updateButtons();
-})();
