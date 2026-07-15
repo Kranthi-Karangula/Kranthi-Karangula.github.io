@@ -132,21 +132,66 @@ a:hover, a:focus-visible {
   gap: 8px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-primary);
-  border: 1px solid var(--border-strong);
-  padding: 8px 14px;
+  color: #FFFFFF;
+  background: var(--navy);
+  border: 1px solid var(--navy);
+  padding: 8px 16px;
   border-radius: 6px;
   white-space: nowrap;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .btn-resume:hover, .btn-resume:focus-visible {
+  background: var(--navy-bright);
   border-color: var(--navy-bright);
-  background: rgba(43, 95, 224, 0.1);
   text-decoration: none;
 }
 
-/* Eyebrow, signature monospace label */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  color: var(--text-primary);
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+  padding: 8px 24px 20px;
+}
+
+.mobile-nav a {
+  padding: 12px 0;
+  font-size: 15px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav.open {
+  display: flex;
+}
+
+.mobile-resume {
+  margin-top: 8px;
+  text-align: center;
+  background: var(--navy);
+  color: #FFFFFF;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-weight: 500;
+}
 
 .eyebrow {
   font-family: 'JetBrains Mono', monospace;
@@ -157,23 +202,11 @@ a:hover, a:focus-visible {
   margin-bottom: 18px;
 }
 
-/* Section heading with a small amber accent underline */
+/* Section heading, intermediate step in the type scale between the hero and body text */
 
 .bio h2, .teardowns h2, .contact h2 {
-  position: relative;
-  padding-bottom: 18px;
+  font-size: 34px;
   margin-bottom: 24px;
-}
-
-.bio h2::after, .teardowns h2::after, .contact h2::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 30px;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--amber);
 }
 
 /* Hero */
@@ -259,7 +292,7 @@ a:hover, a:focus-visible {
 /* Bio */
 
 .bio {
-  padding: 64px 24px;
+  padding: 64px 24px 96px;
   border-top: 1px solid var(--border);
 }
 
@@ -292,47 +325,28 @@ a:hover, a:focus-visible {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .card {
-  position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 30px 28px;
-  min-height: 200px;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 10px;
+  padding: 22px;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .card:hover {
   border-color: var(--navy);
   background: var(--surface-hover);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px -12px rgba(43, 95, 224, 0.35);
-}
-
-.card-num {
-  position: absolute;
-  top: 26px;
-  right: 28px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  color: var(--text-muted);
-  letter-spacing: 0.06em;
 }
 
 .card-icon {
-  width: 42px;
-  height: 42px;
+  width: 34px;
+  height: 34px;
   color: var(--navy-bright);
-  margin-bottom: 24px;
-  transition: color 0.2s ease;
-}
-
-.card:hover .card-icon {
-  color: var(--amber);
+  margin-bottom: 16px;
 }
 
 .card-icon svg {
@@ -344,7 +358,7 @@ a:hover, a:focus-visible {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .status-dot {
@@ -363,13 +377,13 @@ a:hover, a:focus-visible {
 }
 
 .card h3 {
-  font-size: 19px;
-  margin-bottom: 10px;
-  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .card-placeholder {
-  font-size: 14.5px;
+  font-size: 14px;
   color: var(--text-secondary);
 }
 
@@ -394,8 +408,8 @@ a:hover, a:focus-visible {
 }
 
 .contact-links a:hover, .contact-links a:focus-visible {
-  color: var(--amber);
-  border-color: var(--amber);
+  color: var(--navy-bright);
+  border-color: var(--navy-bright);
   text-decoration: none;
 }
 
@@ -448,6 +462,14 @@ a:hover, a:focus-visible {
     display: none;
   }
 
+  .btn-resume {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
   .hero {
     padding: 56px 20px 48px;
   }
@@ -459,6 +481,10 @@ a:hover, a:focus-visible {
   .stat-row {
     grid-template-columns: 1fr;
     max-width: 100%;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
   }
 }
 

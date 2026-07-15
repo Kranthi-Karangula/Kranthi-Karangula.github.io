@@ -93,3 +93,21 @@
     }, 200);
   });
 })();
+
+(function () {
+  var toggle = document.getElementById('menu-toggle');
+  var menu = document.getElementById('mobile-nav');
+  if (!toggle || !menu) return;
+
+  toggle.addEventListener('click', function () {
+    var isOpen = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  menu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
