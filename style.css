@@ -256,21 +256,15 @@ a:hover, a:focus-visible {
   display: block;
 }
 
-/* Split section, About and Product teardowns side by side */
+/* Bio */
 
-.split-section {
-  max-width: 1160px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
+.bio {
+  padding: 64px 24px;
   border-top: 1px solid var(--border);
-  padding-top: 64px;
-  padding-bottom: 64px;
-  align-items: start;
 }
 
-.bio, .teardowns {
-  padding: 0;
+.bio-text {
+  max-width: 720px;
 }
 
 .bio-text p {
@@ -282,26 +276,84 @@ a:hover, a:focus-visible {
   margin-bottom: 0;
 }
 
-.section-sub {
-  color: var(--text-secondary);
-  margin-bottom: 28px;
+/* Teardowns */
+
+.teardowns {
+  padding: 64px 24px;
+  border-top: 1px solid var(--border);
 }
 
-.card-list {
+.teardowns-heading {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.section-sub {
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin-top: 4px;
+}
+
+.carousel-controls {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.carousel-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.carousel-btn:hover, .carousel-btn:focus-visible {
+  border-color: var(--navy-bright);
+  background: rgba(43, 95, 224, 0.12);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.carousel-btn:disabled:hover {
+  border-color: var(--border-strong);
+  background: transparent;
+}
+
+.card-carousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.card-carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 18px;
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
+  border-radius: 12px;
+  padding: 24px;
   transition: border-color 0.15s ease, background 0.15s ease;
+  flex: 0 0 260px;
+  scroll-snap-align: start;
 }
 
 .card:hover {
@@ -310,10 +362,10 @@ a:hover, a:focus-visible {
 }
 
 .card-icon {
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   color: var(--navy-bright);
-  flex-shrink: 0;
+  margin-bottom: 18px;
   transition: color 0.15s ease;
 }
 
@@ -330,7 +382,7 @@ a:hover, a:focus-visible {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .status-dot {
@@ -349,13 +401,13 @@ a:hover, a:focus-visible {
 }
 
 .card h3 {
-  font-size: 16px;
-  margin-bottom: 6px;
+  font-size: 17px;
+  margin-bottom: 8px;
   font-weight: 500;
 }
 
 .card-placeholder {
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--text-secondary);
 }
 
@@ -401,14 +453,16 @@ a:hover, a:focus-visible {
 
 /* Responsive */
 
-@media (max-width: 900px) {
-  .split-section {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-}
-
 @media (max-width: 780px) {
+  .teardowns-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .carousel-controls {
+    align-self: flex-end;
+  }
+
   .hero {
     min-height: auto;
   }
@@ -455,7 +509,7 @@ a:hover, a:focus-visible {
   }
 
   .card {
-    flex-direction: column;
+    flex-basis: 240px;
   }
 }
 
