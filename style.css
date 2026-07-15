@@ -271,7 +271,7 @@ a:hover, a:focus-visible {
   height: 100%;
   border-radius: 18px;
   object-fit: cover;
-  object-position: 50% 22%;
+  object-position: 50% 8%;
   display: block;
 }
 
